@@ -1,0 +1,20 @@
+<view class="nav">
+    <view class="item active">
+        未使用(2)
+    </view>
+    <view class="item">
+        使用记录(0)
+    </view>
+    <view class="item">
+        已过期(0)
+    </view>
+</view>
+<view class="list">
+    <image class="coupon" src="/images/coupon_1.png" />
+    <image class="coupon" src="/images/coupon_2.png" />
+</view>
+<image class="bottom" src="/images/bottom.png" />
+<view class="btn">
+    <view class="item"></view>
+    <view class="item"></view>
+</view>

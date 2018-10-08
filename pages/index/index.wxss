@@ -1,0 +1,172 @@
+map {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    height: 100rpx;
+    padding: 10rpx 25rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.header .avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}
+
+.header .search {
+    width: 485rpx;
+    height: 60rpx;
+}
+
+.header .location {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.shadow {
+    width: 100%;
+    height: 10rpx;
+}
+
+.ader {
+    position: relative;
+    height: 120rpx;
+    padding: 15rpx 30rpx 0;
+}
+
+.ader .ad {
+    width: 100%;
+    height: 100rpx;
+}
+
+.ader .close {
+    position: absolute;
+    top: 20rpx;
+    right: 40rpx;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.position {
+    position: absolute;
+    left: 20rpx;
+    /*bottom: 240rpx;*/
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.question {
+    position: absolute;
+    right: 20rpx;
+    /*bottom: 340rpx;*/
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.service {
+    position: absolute;
+    right: 20rpx;
+    /*bottom: 240rpx;*/
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.service .kf_button {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0;
+    border-radius: 0;
+}
+
+.service .kf_button::after {
+    border: 0;
+}
+
+.service .kf_button cover-image {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.item {
+    position: absolute;
+    left: 20rpx;
+    width: 655rpx;
+    height: 190rpx;
+    background-color: #fff;
+    border-radius: 20rpx; 
+    padding: 5rpx 30rpx;
+}
+
+.item .top {
+    display: flex;
+    justify-content: center;
+    min-height: 25rpx;
+}
+
+.item .top cover-image {
+    width: 40rpx;
+    height: 25rpx;
+}
+
+.item .bottom {
+    display: flex;
+}
+
+.item .bottom .logo {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+    margin-right: 30rpx;
+}
+
+.item .bottom .info {
+    display: flex;
+    flex-direction: column;
+    width: 375rpx;
+    height: 150rpx;
+}
+
+.item .bottom .info .t-1 {
+    color: #070707;
+    font-size: 36rpx;
+    margin-bottom: 20rpx;
+}
+
+.item .bottom .info .t-2 {
+    color: #303030;
+    font-size: 24rpx;
+    margin-bottom: 15rpx;
+}
+
+.item .bottom .arrow {
+    width: 100rpx;
+    height: 150rpx;
+}
+
+.center {
+    position: absolute;
+    top: 0;
+    bottom: 40rpx;
+    left: 40rpx;
+    right: 0;
+    margin: auto;
+    width: 200rpx;
+    height: 130rpx;
+}
+
+.center cover-image {
+    width: 200rpx;
+    height: 130rpx;
+}
+
+.center cover-view {
+    position: absolute;
+    top: 10rpx;
+    left: 30rpx;
+    color: #848282;
+    font-size: 22rpx;
+}

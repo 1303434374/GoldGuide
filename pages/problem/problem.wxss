@@ -1,0 +1,51 @@
+.item-title {
+    position: relative;
+    justify-content: space-between;
+    height: 100rpx;
+    padding-left: 30rpx;
+    padding-right: 40rpx;
+    z-index: 2;
+}
+
+.item-title text {
+    color: #000;
+    font-size: 28rpx;
+}
+
+.item-title image {
+    width: 30rpx;
+    height: 20rpx;
+}
+
+.item-content {
+    color: #000;
+    font-size: 24rpx;
+    line-height: 40rpx;
+    padding: 25rpx 40rpx;
+    border-bottom: 10rpx solid #f6f6f6;
+}
+
+.btn {
+    position: absolute;
+    left: 50%;
+    bottom: 75rpx;
+    margin-left: -225rpx;
+	width: 450rpx;
+	height: 70rpx;
+	background-color: #fff;
+	color: #26abd6;
+	font-size: 30rpx;
+	line-height: 70rpx;
+	text-align: center;
+	border-radius: 25rpx;
+    border: 1px solid #26abd6;
+}
+
+.btn {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0;
+}
+
+.btn::after {
+    border: 0;
+}

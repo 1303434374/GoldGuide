@@ -1,0 +1,22 @@
+{
+  "pages":[
+      "pages/index/index",
+      "pages/store-detail/store-detail",
+      "pages/city-list/city-list",
+      "pages/store-list/store-list",
+      "pages/my/my",
+      "pages/my-wallet/my-wallet",
+      "pages/my-coupon/my-coupon",
+      "pages/store-enter/store-enter",
+      "pages/problem/problem",
+      "pages/login/login"
+  ],
+  "window":{
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#fff",
+      "navigationBarTitleText": "WeChat",
+      "navigationBarTextStyle": "black",
+      "enablePullDownRefresh": false,
+      "onReachBottomDistance": 0
+  }
+}

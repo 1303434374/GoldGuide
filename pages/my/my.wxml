@@ -1,0 +1,57 @@
+<view class="header-container">
+    <view class="info">
+        <view class="t-1">
+            {{nickname}}
+        </view>
+        <view class="t-2">
+            ID：84528815
+        </view>
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class="none"><image src="/images/my_phone.png" /></button>
+    </view>
+    <image class="avatar" src="{{headerimg}}" />
+</view>
+<view class="list-container">
+    <view class="item" catchtap="tap_item" data-id="1">
+        <view class="left">
+            <image src="/images/my_1.png" />
+            <text decode="{{true}}">我的钱包</text>
+        </view>
+        <image class="right" src="/images/my_arrow.png" />
+    </view>
+    <view class="item" catchtap="tap_item" data-id="2">
+        <view class="left">
+            <image src="/images/my_2.png" />
+            <text decode="{{true}}">优&ensp;惠&ensp;劵</text>
+            <text class="tip">无可用优惠券</text>
+        </view>
+        <image class="right" src="/images/my_arrow.png" />
+    </view>
+    <view class="item" catchtap="tap_item" data-id="3">
+        <view class="left">
+            <image src="/images/my_3.png" />
+            <text decode="{{true}}">商家入驻</text>
+        </view>
+        <image class="right" src="/images/my_arrow.png" />
+    </view>
+    <view class="item" catchtap="tap_item" data-id="4">
+        <view class="left">
+            <image src="/images/my_4.png" />
+            <text decode="{{true}}">评&ensp;&ensp;&ensp;&ensp;论</text>
+        </view>
+        <image class="right" src="/images/my_arrow.png" />
+    </view>
+    <view class="item" catchtap="tap_item" data-id="5">
+        <view class="left">
+            <image src="/images/my_5.png" />
+            <text decode="{{true}}">关&ensp;&ensp;&ensp;&ensp;于</text>
+        </view>
+        <image class="right" src="/images/my_arrow.png" />
+    </view>
+    <view class="item" catchtap="tap_item" data-id="6">
+        <view class="left">
+            <image src="/images/my_6.png" />
+            <text decode="{{true}}">帮&ensp;&ensp;&ensp;&ensp;助</text>
+        </view>
+        <image class="right" src="/images/my_arrow.png" />
+    </view>
+</view>

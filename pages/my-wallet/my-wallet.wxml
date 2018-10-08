@@ -1,0 +1,14 @@
+<image class="bg" src="/images/wallet_bg.png" />
+<view class="price">
+    <text class="t-1">0</text>
+    <text class="t-2">元</text>
+</view>
+<view class="b-1">充值</view>
+<view class="item flex-row flex-ali">
+    <text>交易明细</text>
+    <image class="right" src="/images/right.png" />
+</view>
+<view class="b-2">提现</view>
+<navigator class="t-3" url="/pages/problem/problem" hover-class="none">
+    常见问题
+</navigator>

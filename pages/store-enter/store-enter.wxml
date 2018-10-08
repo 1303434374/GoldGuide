@@ -1,0 +1,96 @@
+<view class="form-list">
+    <view class="item flex-row flex-ali">
+        <text>所在单位：</text>
+        <input placeholder="填写所属旅行社" maxlength="20" value="{{company}}" data-id="0" bindinput="input_value" />
+        <!--<image class="updown" src="/images/updown.png" />-->
+    </view>
+    <view class="item flex-row flex-ali">
+        <text>单位名称：</text>
+        <input placeholder="请按旅行社营业执照全称填写" maxlength="20" value="{{shop}}" data-id="1" bindinput="input_value" />
+    </view>
+    <view class="item flex-row flex-ali">
+        <text>单位简称：</text>
+        <input placeholder="须和公司字号相关" maxlength="20" value="{{sshop}}" data-id="2" bindinput="input_value" />
+    </view>
+    <view class="item flex-row flex-ali">
+        <text>单位等级：</text>
+        <picker bindchange="change_picker" range="{{grade_data}}" value="{{grade_state}}" data-id="3">
+            <view class="item-right">
+                <input class="ellipsis" placeholder="点击选择单位等级" value="{{grade_data[grade_state]}}" disabled />
+                <image src="/images/right.png" />
+            </view>
+        </picker>
+    </view>
+    <view class="item flex-row flex-ali">
+        <text>经营范围：</text>
+        <picker bindchange="change_picker" range="{{area_data}}" range-key="fname" value="{{area_state}}" data-id="0">
+            <view class="item-right">
+                <input class="ellipsis" placeholder="点击选择经营范围" value="{{area_data[area_state].fname}}" disabled />
+                <image src="/images/right.png" />
+            </view>
+        </picker>
+    </view>
+    <view class="item flex-row flex-ali">
+        <text>负责人员：</text>
+        <input placeholder="请按营业执照负责人填写" maxlength="20" value="{{people}}" data-id="3" bindinput="input_value" />
+    </view>
+    <view class="item flex-row flex-ali">
+        <text>联系电话：</text>
+        <input type="number" placeholder="请输入11位手机号码" maxlength="11" value="{{tel}}" data-id="4" bindinput="input_value" />
+    </view>
+    <view class="item flex-row flex-ali">
+        <text>输验证码：</text>
+        <input type="number" placeholder="请输入验证码" maxlength="6" value="{{code}}" data-id="6" bindinput="input_value" />
+        <view class="ver" catchtap="tap_ver" style="{{ver == '获取验证码' || ver == '重新获取' ? '' : 'color: #999;border: 1px solid #999;'}}">
+            {{ver}}
+        </view>
+    </view>
+    <view class="item flex-row">
+        <text>开始营业：</text>
+        <picker mode="time" value="{{start}}" bindchange="change_picker" data-id="1">
+            <view class="item-right">
+                <input class="ellipsis" placeholder="点击选择开始营业时间" value="{{start}}" disabled />
+                <image src="/images/right.png" />
+            </view>
+        </picker>
+    </view>
+    <view class="item flex-row">
+        <text>结束营业：</text>
+        <picker mode="time" value="{{end}}" bindchange="change_picker" data-id="2">
+            <view class="item-right">
+                <input class="ellipsis" placeholder="点击选择结束营业时间" value="{{end}}" disabled />
+                <image src="/images/right.png" />
+            </view>
+        </picker>
+    </view>
+    <view class="item flex-row">
+        <text>地图选点：</text>
+        <view class="item-right" catchtap="choose_location">
+            <input class="ellipsis" placeholder="点击选择机构地点" value="{{address}}" disabled />
+            <image src="/images/right.png" />
+        </view>
+    </view>
+    <view class="item flex-row flex-ali">
+        <text>详细地址：</text>
+        <input placeholder="请按营业执照地址全部填写" value="{{address}}" data-id="5" bindinput="input_value" />
+    </view>
+    <view class="item flex-col">
+        <text>LOGO图：</text>
+        <image src="{{img_0 ? img_0 : '/images/enter_1.png'}}" data-id="0" catchtap="tap_load" /> 
+    </view>
+    <view class="item flex-col">
+        <text>营业执照：</text>
+        <image src="{{img_1 ? img_1 : '/images/enter_2.png'}}" data-id="1" catchtap="tap_load" /> 
+    </view>
+    <view class="item flex-col">
+        <text>门店照片：</text>
+        <image src="{{img_2 ? img_2 : '/images/enter_3.png'}}" data-id="2" catchtap="tap_load" /> 
+    </view>
+    <view class="item flex-col">
+        <text>负责人员旅游照片：</text>
+        <image src="{{img_3 ? img_3 : '/images/enter_4.png'}}" data-id="3" catchtap="tap_load" /> 
+    </view>
+    <view class="btn-container">
+        <view class="btn" catchtap="tap_btn">提交申请</view>
+    </view>
+</view>

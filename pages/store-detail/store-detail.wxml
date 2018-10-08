@@ -1,0 +1,45 @@
+<view class="container">
+    <swiper autoplay="true" circular="true" indicator-dots indicator-color="#fff" indicator-active-color="#1b9aeb" autoplay>
+        <swiper-item>
+            <image src="{{data.mengimg}}" lazy-load="true" />
+        </swiper-item>
+        <swiper-item>
+            <image src="{{data.travelallowimg}}" lazy-load="true" />
+        </swiper-item>
+    </swiper>
+    <view class="title-container">
+        <image class="logo" src="{{data.s_img}}" />
+        <view class="name">
+            {{data.s_name}}
+        </view>
+        <view class="gps-container" catchtap="tap_gps">
+            <image src="/images/gps.png" />
+            <text>距离{{data.distance}}</text>
+        </view>
+    </view>
+    <view class="item">
+        <image src="/images/detail_1.png" />
+        <view>{{data.s_address}}</view>
+    </view>
+    <view class="item">
+        <image src="/images/detail_2.png" />
+        <view>营业时间：{{data.starttime}}-{{data.endtime}}</view>
+    </view>
+    <view class="item">
+        <image src="/images/detail_3.png" />
+        <view>为您服务：{{data.s_headname}}</view>
+    </view>
+    <view class="item" catchtap="tap_tel">
+        <image src="/images/detail_4.png" />
+        <view>联系电话：<text style="color: #26abd6;">{{data.s_headphone}}</text></view>
+    </view>
+    <view class="item" style="border-bottom: 0;">
+        <image src="/images/detail_5.png" />
+        <view>经营范围</view>
+        <image class="arrow" src="/images/down_2.png" />
+    </view>
+    <view class="item2">
+        <image src="/images/tick.png" />
+        <view>{{data.allrange}}</view>
+    </view>
+</view>

@@ -1,0 +1,106 @@
+.form-list .item {
+    position: relative;
+    padding: 10rpx 20rpx;
+    background-color: #fff;
+    z-index: 3;
+    border-bottom: 1px solid #ddd;
+}
+
+.form-list .item text {
+	height: 80rpx;
+	line-height: 80rpx;
+	color: #000;
+	font-size: 30rpx;
+	margin-right: 50rpx;
+}
+
+.form-list .item input {
+	flex: 1;
+	font-size: 26rpx;
+	z-index: 2;
+}
+
+.form-list .item textarea {
+    flex: 1;
+    height: 130rpx;
+    margin-top: 25rpx;
+    font-size: 26rpx;
+    z-index: 2;
+}
+
+.form-list .item .updown {
+    width: 50rpx;
+    height: 50rpx;
+    margin: 0 10rpx;
+}
+
+.form-list .item .right {
+    width: 20rpx;
+    height: 30rpx;
+    margin: 0 10rpx;
+}
+
+.form-list .item picker { 
+    flex: 1;
+}
+
+.form-list .item .item-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 80rpx;
+}
+
+.form-list .item .item-right image {
+    width: 16rpx;
+    height: 30rpx;
+}
+
+.form-list .item .ver {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150rpx;
+    height: 50rpx;
+    color: #26abd6;
+    font-size: 24rpx;
+    border-radius: 15rpx;
+    border: 1px solid #26abd6;
+    margin: 0 10rpx;
+}
+
+.form-list .item picker { 
+    flex: 1;
+}
+
+.form-list .item .item-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 80rpx;
+}
+
+.form-list .item.flex-col image {
+    width: 140rpx;
+    height: 140rpx;
+    margin-bottom: 20rpx;
+    z-index: 2;
+}
+
+.btn-container {
+	display: flex;
+    justify-content: center;
+    padding: 60rpx 0;
+	background-color: #fff;
+}
+
+.btn-container .btn {
+	width: 330rpx;
+	height: 60rpx;
+	background-color: #26abd6;
+	color: #fff;
+	font-size: 25rpx;
+	line-height: 60rpx;
+	text-align: center;
+	border-radius: 10rpx;
+}

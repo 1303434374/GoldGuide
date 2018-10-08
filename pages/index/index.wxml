@@ -1,0 +1,80 @@
+<map longitude="{{longitude}}" latitude="{{latitude}}" scale="14" markers="{{map_list}}" bindmarkertap="tap_item" bindtap="tap_map" show-location>
+    <cover-view class="header">
+        <cover-image class="avatar" src="{{headerimg}}" catchtap="tap_my" />
+        <cover-image class="search" src="/images/search.png" catchtap="choose_location" />
+        <cover-image class="location" src="/images/location.png" catchtap="tap_list" />
+    </cover-view>
+    <cover-image class="shadow" src="/images/shadow.png" />
+    <cover-view class="ader" wx:if="{{ad}}">
+        <cover-image class="ad" src="/images/ad.png" />
+        <cover-image class="close" src="/images/ad_close.png" catchtap="tap_close" />
+    </cover-view>
+    <cover-view class="center" wx:if="{{map_list.length != 0}}">
+        <cover-image src="/images/center.png" />
+        <cover-view>附近{{near_count}}个网点</cover-view>
+    </cover-view>
+    <cover-image class="position" src="/images/position.png" catchtap="set_location" style="{{list.length == 0 ? 'bottom: 60rpx;' : 'bottom: 240rpx;'}}" />
+    <cover-image class="question" src="/images/question.png" catchtap="tap_problem" style="{{list.length == 0 ? 'bottom: 160rpx;' : 'bottom: 340rpx;'}}" />
+    <cover-view class="service" style="{{list.length == 0 ? 'bottom: 60rpx;' : 'bottom: 240rpx;'}}">
+        <button class="kf_button" open-type="contact" session-from="weapp">
+            <cover-image src="/images/service.png" />
+        </button>
+    </cover-view>
+    <cover-view class="item" style="{{open ? 'bottom: '+bottom+'rpx;' : 'bottom: 30rpx;'}}" wx:if="{{list.length > 0}}"
+        bindtouchmove="handletouchmove" bindtouchstart="handletouchtart" bindtouchend="handletouchend">
+        <cover-view class="top">
+            <cover-image src="/images/{{open ? 'down' : 'up'}}.png" catchtap="tap_open" />
+        </cover-view>
+        <cover-view class="bottom" catchtap="tap_item" data-id="{{list[0].id}}">
+            <cover-image class="logo" src="{{list[0].s_img}}" />
+            <cover-view class="info">
+                <cover-view class="t-1 ellipsis">{{list[0].s_name}}</cover-view>
+                <cover-view class="t-2 ellipsis">{{list[0].distance}} | {{list[0].s_address}}</cover-view>
+                <cover-view class="t-2">{{list[0].starttime}}-{{list[0].endtime}}</cover-view>
+            </cover-view>
+            <cover-image class="arrow" src="/images/arrow.png" />
+        </cover-view>
+    </cover-view>
+    <cover-view class="item" hidden="{{!open}}" style="{{list.length == 2 ? 'bottom: 0rpx;' : list.length == 3 ? 'bottom: 200rpx;' : list.length == 4 ? 'bottom: 400rpx;' : 'bottom: 400rpx;'}}" wx:if="{{list.length > 1}}"
+    bindtouchmove="handletouchmove" bindtouchstart="handletouchtart" bindtouchend="handletouchend">
+        <cover-view class="top">
+        </cover-view>
+        <cover-view class="bottom" catchtap="tap_item" data-id="{{list[1].id}}">
+            <cover-image class="logo" src="{{list[1].s_img}}" />
+            <cover-view class="info">
+                <cover-view class="t-1 ellipsis">{{list[1].s_name}}</cover-view>
+                <cover-view class="t-2 ellipsis">{{list[1].distance}} | {{list[1].s_address}}</cover-view>
+                <cover-view class="t-2">{{list[1].starttime}}-{{list[1].endtime}}</cover-view>
+            </cover-view>
+            <cover-image class="arrow" src="/images/arrow.png" />
+        </cover-view>
+    </cover-view>
+    <cover-view class="item" hidden="{{!open}}" style="{{list.length == 3 ? 'bottom: 0rpx;' : list.length == 4 ? 'bottom: 200rpx;' : 'bottom: 200rpx;'}}" wx:if="{{list.length > 2}}"
+    bindtouchmove="handletouchmove" bindtouchstart="handletouchtart" bindtouchend="handletouchend">
+        <cover-view class="top">
+        </cover-view>
+        <cover-view class="bottom" catchtap="tap_item" data-id="{{list[2].id}}">
+            <cover-image class="logo" src="{{list[2].s_img}}" />
+            <cover-view class="info">
+                <cover-view class="t-1 ellipsis">{{list[2].s_name}}</cover-view>
+                <cover-view class="t-2 ellipsis">{{list[2].distance}} | {{list[2].s_address}}</cover-view>
+                <cover-view class="t-2">{{list[2].starttime}}-{{list[2].endtime}}</cover-view>
+            </cover-view>
+            <cover-image class="arrow" src="/images/arrow.png" />
+        </cover-view>
+    </cover-view>
+    <cover-view class="item" hidden="{{!open}}" style="bottom: 0rpx;" wx:if="{{list.length > 3}}"
+    bindtouchmove="handletouchmove" bindtouchstart="handletouchtart" bindtouchend="handletouchend">
+        <cover-view class="top">
+        </cover-view>
+        <cover-view class="bottom" catchtap="tap_item" data-id="{{list[3].id}}">
+            <cover-image class="logo" src="{{list[3].s_img}}" />
+            <cover-view class="info">
+                <cover-view class="t-1 ellipsis">{{list[3].s_name}}</cover-view>
+                <cover-view class="t-2 ellipsis">{{list[3].distance}} | {{list[3].s_address}}</cover-view>
+                <cover-view class="t-2">{{list[3].starttime}}-{{list[3].endtime}}</cover-view>
+            </cover-view>
+            <cover-image class="arrow" src="/images/arrow.png" />
+        </cover-view>
+    </cover-view>
+</map>
