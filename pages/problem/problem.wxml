@@ -3,6 +3,6 @@
         <text>{{item.title}}</text>
         <image src="/images/{{item.on ? 'up' : 'down'}}.png" />
     </view>
-    <view class="item-content" wx:if="{{item.on}}">{{item.content}}</view>
+    <view class="item-content" wx:if="{{item.on}}">{{item.contents}}</view>
 </block>
 <button class="btn" open-type="contact" session-from="weapp">联 系 客 服</button>

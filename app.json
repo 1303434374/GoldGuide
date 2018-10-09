@@ -9,7 +9,8 @@
       "pages/my-coupon/my-coupon",
       "pages/store-enter/store-enter",
       "pages/problem/problem",
-      "pages/login/login"
+      "pages/login/login",
+      "pages/about/about"
   ],
   "window":{
       "backgroundTextStyle": "light",

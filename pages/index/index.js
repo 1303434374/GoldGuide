@@ -14,6 +14,8 @@ Page({
         map_list: [],
         near_count: 0,
         ad: true,
+        ad_img: '',
+        ad_url: '',
         open: false,
         bottom: 30,
         lastX: 0,
@@ -31,6 +33,7 @@ Page({
         } else {
             this.get_location()
         }
+        this.get_ad()
     },
 
     onShow: function (event) {
@@ -88,6 +91,17 @@ Page({
 
     handletouchend:function(event) {
         this.data.currentGesture = 0
+    },
+
+    get_ad: function (event) {
+         app.http_get('Getad', (ret) => {
+            if (ret.status == 1) {
+                this.setData({
+                    ad_img: ret.result[0].adimg,
+                    ad_url: ret.result[0].adurl 
+                })
+            }
+         })
     },
 
     get_location: function () {

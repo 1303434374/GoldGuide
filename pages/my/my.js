@@ -77,6 +77,11 @@ Page({
           url: '/pages/store-enter/store-enter'
         })
         break
+      case 5:
+        wx.navigateTo({
+          url: '/pages/about/about'
+        })
+        break
       case 6:
         wx.navigateTo({
           url: '/pages/problem/problem'

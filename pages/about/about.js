@@ -1,20 +1,18 @@
-const app = getApp()
-const QQMap = require('../../utils/qqmap.js')
-// pages/problem/problem.js
+// pages/about/about.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: []
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.get_data()
+
   },
 
   /**
@@ -64,29 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-    get_data: function (event) {
-        app.http_get('Getprob', (ret) => {
-            let list = ret.result
-            list.forEach((value, index, array) => {
-                value.on = false
-                if (index == list.length - 1) {
-                    this.setData({
-                        list: list
-                    })
-                }
-            })
-        })
-    },
-
-  tap_item: function (event) {
-        let list = this.data.list
-        let item = list[event.currentTarget.dataset.id]
-        item.on = !item.on
-        this.setData({
-            list: list
-        })
   }
-
 })
