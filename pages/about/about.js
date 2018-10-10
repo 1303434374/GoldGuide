@@ -5,7 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    info:{
+      name: '金牌导游GoldGuide',
+      des: '金牌导游GoldGuide，纯净，美好的旅游大使。这里有世界各地的旅行社负责人、旅游顾问、金牌导游用心为您服务，金牌导游，和你一起快乐游全球！',
+      logo: '/images/logo.png',
+      tel: '400-0731-333',
+      email: '4000731333@b.qq.com',
+      email2: '158269597@qq.com',
+      site: 'www.goldguide.com'
+    }
   },
 
   /**
@@ -62,5 +70,11 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+    tap_tel: function (event) {
+        wx.makePhoneCall({
+            phoneNumber: this.data.info.tel
+        })
+    },
 })
