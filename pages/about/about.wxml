@@ -1,22 +1,22 @@
-<image class="logo" src="{{info.logo}}" />
+<image class="logo" src="{{info.logoimg}}" />
 <view class="content">
-    {{info.des}}
+    {{info.contents}}
 </view>
 <image class="bg" src="/images/panel.png" mode="widthFix" />
 <view class="panel">
-    <view class="item">
-        {{info.name}}
+    <view class="item" catchtap="tap_copy" data-id="0">
+        {{info.gzh}}
     </view>
     <view class="item" catchtap="tap_tel">
-        {{info.tel}}
+        {{info.phones}}
     </view>
-    <view class="item">
-        {{info.email}}
+    <view class="item" catchtap="tap_copy" data-id="1">
+        {{info.emails}}
     </view>
-    <view class="item">
-        {{info.email2}}
+    <view class="item" catchtap="tap_copy" data-id="2">
+        {{info.shen}}
     </view>
-    <view class="item">
-        {{info.site}}
+    <view class="item" catchtap="tap_copy" data-id="3">
+        {{info.companys}}
     </view>
 </view>
