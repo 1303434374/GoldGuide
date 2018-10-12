@@ -104,6 +104,15 @@ Page({
          })
     },
 
+    tap_ad: function (event) {
+        let url = this.data.ad_url
+        if (url) {
+            wx.navigateTo({
+                url: url
+            })
+        }
+    },
+
     get_location: function () {
         wx.getLocation({
             type: 'gcj02',

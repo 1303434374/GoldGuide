@@ -6,7 +6,7 @@
     </cover-view>
     <cover-image class="shadow" src="/images/shadow.png" />
     <cover-view class="ader" wx:if="{{ad && ad_img}}">
-        <cover-image class="ad" src="{{ad_img}}" />
+        <cover-image class="ad" src="{{ad_img}}" catchtap="tap_ad" />
         <cover-image class="close" src="/images/ad_close.png" catchtap="tap_close" />
     </cover-view>
     <cover-view class="center" wx:if="{{map_list.length != 0}}">
