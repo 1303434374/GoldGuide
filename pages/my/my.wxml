@@ -3,10 +3,10 @@
         <view class="t-1">
             {{nickname}}
         </view>
-        <view class="t-2">
-            ID：84528815
+        <view class="t-2"> 
+            {{phone ? 'ID：' + phone : ''}}
         </view>
-        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class="none"><image src="/images/my_phone.png" /></button>
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class="none" wx:if="{{!phone}}"><image src="/images/my_phone.png" /></button>
     </view>
     <image class="avatar" src="{{headerimg}}" />
 </view>

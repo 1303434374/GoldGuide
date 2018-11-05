@@ -18,6 +18,7 @@ Page({
         img_1: '',
         img_2: '',
         img_3: '',
+        img_4: '',
         area_data: [],
         area_state: 99,
         grade_data: ['总公司','分公司','门店'],
@@ -25,6 +26,7 @@ Page({
         ver: '获取验证码',
         code: '',
         ccode: '',
+        idcard: '',
         checked: true
     },
 
@@ -83,6 +85,7 @@ Page({
         let img_1 = this.data.img_1
         let img_2 = this.data.img_2
         let img_3 = this.data.img_3
+        let img_4 = this.data.img_4
         let latitude = this.data.latitude
         let longitude = this.data.longitude
         let start = this.data.start
@@ -94,7 +97,8 @@ Page({
         let code = this.data.code
         let ccode = this.data.ccode
         let checked = this.data.checked
-        if (!company || !shop || !sshop || !people || !tel || !address || !img_0 || !img_1 || !img_2 || !img_3 || !latitude || !longitude || !start || !end || area_state == 99 || grade_state == 99) {
+        let idcard = this.data.idcard
+        if (!company || !shop || !sshop || !people || !tel || !address || !img_0 || !img_1 || !img_2 || !img_3 || !img_4 || !latitude || !longitude || !start || !end || !idcard || area_state == 99 || grade_state == 99) {
             wx.showToast({
                 title: '请把信息填写完整',
                 icon: 'none'
@@ -123,10 +127,12 @@ Page({
                 s_address: address,
                 latitude: latitude,
                 longitude: longitude,
+                c_code: idcard,
                 s_img: img_0,
                 yingyeimg: img_1,
                 mengimg: img_2,
                 travelallowimg: img_3,
+                workimg: img_4,
                 starttime: start,
                 endtime: end,
                 allrange: area_data[area_state].fname,
@@ -225,6 +231,8 @@ Page({
             case 6:
                 name = 'code'
                 break
+            case 7:
+                name = 'idcard'
         }
         this.setData({
             [name]: event.detail.value

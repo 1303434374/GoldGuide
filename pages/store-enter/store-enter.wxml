@@ -9,6 +9,10 @@
         <input placeholder="请按旅行社营业执照全称填写" maxlength="20" value="{{shop}}" data-id="1" bindinput="input_value" />
     </view>
     <view class="item flex-row flex-ali">
+        <text>统一社会信用代码：</text>
+        <input placeholder="填写统一社会信用代码" maxlength="20" value="{{idcard}}" data-id="7" bindinput="input_value" />
+    </view>
+    <view class="item flex-row flex-ali">
         <text>单位简称：</text>
         <input placeholder="须和公司字号相关" maxlength="20" value="{{sshop}}" data-id="2" bindinput="input_value" />
     </view>
@@ -75,26 +79,30 @@
         <input placeholder="请按营业执照地址全部填写" value="{{address}}" data-id="5" bindinput="input_value" />
     </view>
     <view class="item flex-col">
-        <text>LOGO图：</text>
-        <image src="{{img_0 ? img_0 : '/images/enter_1.png'}}" data-id="0" catchtap="tap_load" /> 
+        <text>LOGO图：(请上传清晰的旅行社的标志Logo)</text>
+        <image src="{{img_0 ? img_0 : '/images/enter_0.png'}}" data-id="0" catchtap="tap_load" /> 
     </view>
     <view class="item flex-col">
-        <text>营业执照：</text>
-        <image src="{{img_1 ? img_1 : '/images/enter_2.png'}}" data-id="1" catchtap="tap_load" /> 
+        <text>营业执照：(请上传完整的清晰的营业执照)</text>
+        <image src="{{img_1 ? img_1 : '/images/enter_1.png'}}" data-id="1" catchtap="tap_load" /> 
     </view>
     <view class="item flex-col">
-        <text>门店照片：</text>
-        <image src="{{img_2 ? img_2 : '/images/enter_3.png'}}" data-id="2" catchtap="tap_load" /> 
+        <text style="line-height:40rpx;margin-right:0;">门店照片：(请上传门店照片，请确保门店名称清晰可见，勿上传设计图和相关资质照片，避免泄露信息)</text>
+        <image src="{{img_2 ? img_2 : '/images/enter_2.png'}}" data-id="2" catchtap="tap_load" /> 
     </view>
     <view class="item flex-col">
-        <text>负责人员旅游照片：</text>
-        <image src="{{img_3 ? img_3 : '/images/enter_4.png'}}" data-id="3" catchtap="tap_load" /> 
+        <text>办公照片：(请上传显示公司办公氛围的清晰照片)</text>
+        <image src="{{img_4 ? img_4 : '/images/enter_4.png'}}" data-id="4" catchtap="tap_load" /> 
+    </view>
+    <view class="item flex-col">
+        <text style="line-height:40rpx;margin-right:0;">负责人员旅游照片：(请上传负责人旅游照片，能够看清楚全脸)</text>
+        <image src="{{img_3 ? img_3 : '/images/enter_3.png'}}" data-id="3" catchtap="tap_load" /> 
     </view>
     <view class="agree">
         <checkbox-group bindchange="change">
             <checkbox value="yes" checked="{{checked}}" color="#26abd6"/>
         </checkbox-group>
-        <text>我同意</text>
+        <text>我已认真阅读并完全同意</text>
         <text style="color: #26abd6;" catchtap="tap_agree">《旅行社商户入驻注册协议》</text>
     </view>
     <view class="btn-container">

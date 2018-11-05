@@ -1,3 +1,5 @@
+const app = getApp()
+const QQMap = require('../../utils/qqmap.js')
 // pages/my/my.js
 Page({
 
@@ -6,7 +8,8 @@ Page({
    */
   data: {
     nickname: '',
-    headerimg: ''
+    headerimg: '',
+    phone: ''
   },
 
   /**
@@ -17,6 +20,11 @@ Page({
           this.setData({
               nickname: wx.getStorageSync('nickname'),
               headerimg: wx.getStorageSync('headerimg')
+          })
+      }
+      if (wx.getStorageSync('phone')) {
+          this.setData({
+              phone: wx.getStorageSync('phone')
           })
       }
   },
@@ -97,23 +105,44 @@ Page({
   },
 
   getPhoneNumber: function(e) { 
-    console.log(e.detail.errMsg) 
-    console.log(e.detail.iv) 
-    console.log(e.detail.encryptedData) 
     if (e.detail.errMsg == 'getPhoneNumber:fail user deny'){
       wx.showModal({
           title: '提示',
           showCancel: false,
-          content: '未授权',
+          content: '请重新点击授权',
           success: function (res) { }
       })
     } else {
-      wx.showModal({
-          title: '提示',
-          showCancel: false,
-          content: '已授权',
-          success: function (res) { }
-      })
+      console.log(e.detail.errMsg) 
+      console.log(e.detail.iv) 
+      console.log(e.detail.encryptedData)
+      let t = this
+      wx.login({
+          success(s) {
+              console.log(s)
+              app.http_post("Getphone", {
+                  code: s.code,
+                  encryptedData: e.detail.encryptedData,
+                  iv: e.detail.iv
+              }, (ss) => {
+                  console.log(ss)
+                  if (ss.phoneNumber) {
+                    let phone = ss.phoneNumber
+                    phone = phone.substr(0,3) + '****' + phone.substr(7)
+                    t.setData({
+                        phone: phone 
+                    })
+                    wx.setStorageSync("phone", phone)
+                    wx.showModal({
+                        title: '提示',
+                        showCancel: false,
+                        content: '已授权',
+                        success: function (res) { }
+                    })
+                  }
+              });
+          }
+      })   
     }
   }
 

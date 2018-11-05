@@ -43,7 +43,7 @@ page:before{
 .title-container .name {
     flex: 1;
     color: #151517;
-    font-size: 45rpx;
+    font-size: 40rpx;
 }
 
 .gps-container {
@@ -76,8 +76,10 @@ page:before{
 }
 
 .item image {
-    width: 50rpx;
-    height: 50rpx;
+    min-width: 50rpx;
+    max-width: 50rpx;
+    min-height: 50rpx;
+    max-height: 50rpx;
     margin-right: 20rpx;
 }
 

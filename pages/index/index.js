@@ -173,8 +173,10 @@ Page({
     tap_map: function (event) {
         let map_list = this.data.map_list
         map_list.forEach((value, index, array) => {
-            value.width = 50
-            value.height = 50
+            if (value.id != 9999) {
+                value.width = 50
+                value.height = 50
+            }
         })
         this.setData({
             list: [],
@@ -282,7 +284,28 @@ Page({
                             arr.push('0')
                             new_list.push(value)
                             if (arr.length == list.length) {
+                                let new_map = []
                                 let new_arr = new_list.sort(this.compare("distance_count"))
+                                let center = [{
+                                    id: 9999,
+                                    latitude: this.data.latitude_o,
+                                    longitude: this.data.longitude_o,
+                                    iconPath: '/images/empty.png',
+                                    width: 10,
+                                    height: 10,
+                                    callout: {
+                                        content: `附近${near_count}个网点`,
+                                        display: 'ALWAYS',
+                                        textAlign: 'center',
+                                        color: '#666',
+                                        fontSize: 12,
+                                        padding: 8,
+                                        borderRadius: 10,
+                                        borderWidth: 1,
+                                        borderColor: '#ddd',
+                                        bgColor: '#fff'
+                                    }
+                                }]
                                 let last_distance = 0
                                 if (new_arr.length < 4) {
                                     last_distance = new_list[new_list.length - 1].distance_count
@@ -306,9 +329,10 @@ Page({
                                         bottom = 600
                                         break
                                 }
+                                new_map = new_arr.concat(center)
                                 this.setData({
                                     list: new_arr,
-                                    map_list: new_arr,
+                                    map_list: new_map,
                                     near_count: near_count,
                                     bottom: bottom,
                                     map_scale: this.get_scale(last_distance)

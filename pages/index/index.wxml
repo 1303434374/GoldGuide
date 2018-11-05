@@ -9,10 +9,10 @@
         <cover-image class="ad" src="{{ad_img}}" catchtap="tap_ad" />
         <cover-image class="close" src="/images/ad_close.png" catchtap="tap_close" />
     </cover-view>
-    <cover-view class="center" wx:if="{{map_list.length != 0}}">
+    <!--<cover-view class="center" wx:if="{{map_list.length != 0}}">
         <cover-image src="/images/center.png" />
         <cover-view>附近{{near_count}}个网点</cover-view>
-    </cover-view>
+    </cover-view>-->
     <cover-image class="position" src="/images/position.png" catchtap="set_location" style="{{list.length == 0 ? 'bottom: 100rpx;' : 'bottom: 240rpx;'}}" />
     <cover-image class="question" src="/images/question.png" catchtap="tap_problem" style="{{list.length == 0 ? 'bottom: 200rpx;' : 'bottom: 340rpx;'}}" />
     <cover-view class="service" style="{{list.length == 0 ? 'bottom: 100rpx;' : 'bottom: 240rpx;'}}">

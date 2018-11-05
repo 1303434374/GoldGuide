@@ -15,7 +15,7 @@
     position: absolute;
     top: 400rpx;
     width: 100%;
-    margin: 0 10rpx;
+    /*margin: 0 10rpx;*/
 }
 
 .panel {
