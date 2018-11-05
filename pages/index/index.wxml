@@ -13,9 +13,9 @@
         <cover-image src="/images/center.png" />
         <cover-view>附近{{near_count}}个网点</cover-view>
     </cover-view>
-    <cover-image class="position" src="/images/position.png" catchtap="set_location" style="{{list.length == 0 ? 'bottom: 60rpx;' : 'bottom: 240rpx;'}}" />
-    <cover-image class="question" src="/images/question.png" catchtap="tap_problem" style="{{list.length == 0 ? 'bottom: 160rpx;' : 'bottom: 340rpx;'}}" />
-    <cover-view class="service" style="{{list.length == 0 ? 'bottom: 60rpx;' : 'bottom: 240rpx;'}}">
+    <cover-image class="position" src="/images/position.png" catchtap="set_location" style="{{list.length == 0 ? 'bottom: 100rpx;' : 'bottom: 240rpx;'}}" />
+    <cover-image class="question" src="/images/question.png" catchtap="tap_problem" style="{{list.length == 0 ? 'bottom: 200rpx;' : 'bottom: 340rpx;'}}" />
+    <cover-view class="service" style="{{list.length == 0 ? 'bottom: 100rpx;' : 'bottom: 240rpx;'}}">
         <button class="kf_button" open-type="contact" session-from="weapp">
             <cover-image src="/images/service.png" />
         </button>

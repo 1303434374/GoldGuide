@@ -1,8 +1,10 @@
-<block wx:for="{{list}}" wx:key="key">
-    <view class="item-title flex-row flex-ali border-b" catchtap="tap_item" data-id="{{index}}">
-        <text>{{item.title}}</text>
-        <image src="/images/{{item.on ? 'up' : 'down'}}.png" />
-    </view>
-    <view class="item-content" wx:if="{{item.on}}">{{item.contents}}</view>
-</block>
+<view class="list-container">
+    <block wx:for="{{list}}" wx:key="key">
+        <view class="item-title flex-row flex-ali border-b" catchtap="tap_item" data-id="{{index}}">
+            <text>{{item.title}}</text>
+            <image src="/images/{{item.on ? 'up' : 'down'}}.png" />
+        </view>
+        <view class="item-content" wx:if="{{item.on}}">{{item.contents}}</view>
+    </block>
+</view>
 <button class="btn" open-type="contact" session-from="weapp">联 系 客 服</button>

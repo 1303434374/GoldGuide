@@ -24,11 +24,18 @@ Page({
         grade_state: 99,
         ver: '获取验证码',
         code: '',
-        ccode: ''
+        ccode: '',
+        checked: true
     },
 
     onLoad: function (options) {
         this.get_type()
+    },
+
+    change: function (event) {
+        this.setData({
+            checked: !this.data.checked
+        })
     },
 
     get_type: function (event) {
@@ -86,6 +93,7 @@ Page({
         let grade_state = this.data.grade_state
         let code = this.data.code
         let ccode = this.data.ccode
+        let checked = this.data.checked
         if (!company || !shop || !sshop || !people || !tel || !address || !img_0 || !img_1 || !img_2 || !img_3 || !latitude || !longitude || !start || !end || area_state == 99 || grade_state == 99) {
             wx.showToast({
                 title: '请把信息填写完整',
@@ -94,6 +102,11 @@ Page({
         } else if (code != ccode) {
             wx.showToast({
                 title: '手机验证码不正确',
+                icon: 'none'
+            })
+        } else if (!checked) {
+            wx.showToast({
+                title: '同意协议才能申请',
                 icon: 'none'
             })
         } else {
@@ -260,6 +273,12 @@ Page({
                 }
             })
         }
+    },
+
+    tap_agree: function (event) {
+        wx.navigateTo({
+            url: '/pages/agree/agree'
+        })
     }
 
 })

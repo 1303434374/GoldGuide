@@ -90,6 +90,13 @@
         <text>负责人员旅游照片：</text>
         <image src="{{img_3 ? img_3 : '/images/enter_4.png'}}" data-id="3" catchtap="tap_load" /> 
     </view>
+    <view class="agree">
+        <checkbox-group bindchange="change">
+            <checkbox value="yes" checked="{{checked}}" color="#26abd6"/>
+        </checkbox-group>
+        <text>我同意</text>
+        <text style="color: #26abd6;" catchtap="tap_agree">《旅行社商户入驻注册协议》</text>
+    </view>
     <view class="btn-container">
         <view class="btn" catchtap="tap_btn">提交申请</view>
     </view>

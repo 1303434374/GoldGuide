@@ -1,3 +1,13 @@
+page {
+    position: relative;
+    height: auto;
+    min-height: 100%;
+}
+
+.list-container {
+    padding-bottom: 200rpx;
+}
+
 .item-title {
     position: relative;
     justify-content: space-between;

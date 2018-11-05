@@ -10,7 +10,8 @@
       "pages/store-enter/store-enter",
       "pages/problem/problem",
       "pages/login/login",
-      "pages/about/about"
+      "pages/about/about",
+      "pages/agree/agree"
   ],
   "window":{
       "backgroundTextStyle": "light",

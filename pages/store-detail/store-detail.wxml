@@ -35,11 +35,15 @@
     </view>
     <view class="item" style="border-bottom: 0;">
         <image src="/images/detail_5.png" />
+        <view>经营范围：{{data.allrange}}</view>
+    </view>
+    <!--<view class="item" style="border-bottom: 0;">
+        <image src="/images/detail_5.png" />
         <view>经营范围</view>
         <image class="arrow" src="/images/down_2.png" />
     </view>
     <view class="item2">
         <image src="/images/tick.png" />
         <view>{{data.allrange}}</view>
-    </view>
+    </view>-->
 </view>
