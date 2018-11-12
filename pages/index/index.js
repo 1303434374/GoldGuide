@@ -1,38 +1,30 @@
 const app = getApp()
-const QQMap = require('../../utils/qqmap.js')
 
 Page({
 
     data: {
         headerimg: '/images/default.png',
-        map_scale: 16,
-        latitude: '',
-        longitude: '',
-        latitude_o: '',
-        longitude_o: '',
-        list: [],
-        map_list: [],
-        near_count: 0,
+        map_scale: 15,//地图缩放等级
+        marker_small: 35,//地图标记默认大小
+        marker_big: 60,//地图标记点击后大小
+        map_range: 1000,//地图附近网点范围
+        latitude: '',//地图中心纬度
+        longitude: '',//地图中心经度
+        list: [],//门店列表
+        map_list: [],//地图标记
+        near_count: 0,//附近门店数
         ad: true,
         ad_img: '',
         ad_url: '',
-        open: false,
-        bottom: 30,
+        open: 1,//0:列表打开 1:显示最近 2:显示点击
+        bottom: 30,//列表置顶的第一个离底部的距离
         lastX: 0,
         lastY: 0,
-        currentGesture: 0
+        currentGesture: 0,
     },
 
     onLoad: function (options) {
-        if (options.lat) {
-            this.setData({
-                latitude: options.lat,
-                longitude: options.lng
-            })
-            this.get_data()
-        } else {
-            this.get_location()
-        }
+        this.get_location()
         this.get_ad()
     },
 
@@ -47,7 +39,7 @@ Page({
     onShareAppMessage: function () {
 
     },
-
+    
     handletouchmove: function(event) {
         if (this.data.currentGesture != 0){
             return
@@ -68,14 +60,16 @@ Page({
             if (ty < 0){
                 //向上滑动
                 this.data.currentGesture = 3
-                if (this.data.open) {
+                if (this.data.open == 1) {
+                    this.tap_open()
+                } else {
                     return
                 }
-                this.tap_open()
+                
             } else if (ty > 30) {
                 //向下滑动
                 this.data.currentGesture = 4
-                if (this.data.open) {
+                if (this.data.open == 0) {
                     this.tap_open()
                 }
             }
@@ -92,7 +86,7 @@ Page({
     handletouchend:function(event) {
         this.data.currentGesture = 0
     },
-
+    
     get_ad: function (event) {
          app.http_get('Getad', (ret) => {
             if (ret.status == 1) {
@@ -119,9 +113,7 @@ Page({
             success: (res) => {
                 this.setData({
                     latitude: res.latitude,
-                    longitude: res.longitude,
-                    latitude_o: res.latitude,
-                    longitude_o: res.longitude
+                    longitude: res.longitude
                 })
                 this.get_data()
             },
@@ -132,15 +124,9 @@ Page({
     },
 
     set_location: function (event) {
-        if (this.data.latitude_o == 0) {
-            this.get_location()
-        } else {
-            this.setData({
-                latitude: this.data.latitude_o,
-                longitude: this.data.longitude_o
-            })
-            this.get_data()
-        }
+        //移动到当前定位点
+        wx.createMapContext('map').moveToLocation()
+        this.get_data()
     },
 
     choose_location: function (event) {
@@ -156,54 +142,76 @@ Page({
     },
 
     tap_list: function (event) {
-        // wx.navigateTo({
-        //     url: '/pages/store-list/store-list'
-        // })
         wx.navigateTo({
             url: '/pages/city-list/city-list'
         })
     },
 
     tap_open: function (event) {
+        let open = this.data.open
+        if (open == 0) {
+            open = 1
+        } else {
+            open = 0
+        }
         this.setData({
-            open: !this.data.open
+            open: open
         })
     },
 
     tap_map: function (event) {
+        //关闭列表，全部标记大小恢复
         let map_list = this.data.map_list
+        let marker_size = this.data.marker_small        
         map_list.forEach((value, index, array) => {
-            if (value.id != 9999) {
-                value.width = 50
-                value.height = 50
-            }
+            value.width = marker_size
+            value.height = marker_size
         })
         this.setData({
             list: [],
             map_list: map_list
         })
-        // let open = this.data.open
-        // if (open) {
-        //     this.setData({
-        //         open: false
-        //     })
-        // }   
     },
 
     tap_item: function (event) {
         let id = 0
+        let list = this.data.list
+        let map_list = this.data.map_list
+        let marker_small = this.data.marker_small
+        let marker_big = this.data.marker_big
         if (event.markerId) {
+            //点击标记
             id = event.markerId
-            let map_list = this.data.map_list
             map_list.forEach((value, index, array) => {
                 if (value.id == id) {
-                    this.get_data(id,value.latitude,value.longitude)
-                } 
+                    value.width = marker_big
+                    value.height = marker_big
+                    list[0] = value
+                } else {
+                    value.width = marker_small
+                    value.height = marker_small
+                }
+            })
+            this.setData({
+                open: 2,
+                list: list,
+                map_list: map_list
             })
         } else {
+            //点击列表
             id = event.currentTarget.dataset.id
             wx.navigateTo({
                 url: `/pages/store-detail/store-detail?id=${id}`
+            })
+        }
+    },
+
+    map_change: function (event) {
+        if (event.type == 'end') {
+            wx.createMapContext('map').getCenterLocation({
+                success: (res) => {
+                    this.get_data(res.latitude,res.longitude)
+                }
             })
         }
     },
@@ -232,20 +240,22 @@ Page({
         })
     },
 
-    get_data: function (id,lat,lng) {
+    get_data: function (lat,lng) {
         wx.showNavigationBarLoading()
         app.http_get('Getshangjia', (ret) => {
             if (ret.result && ret.result.length != 0) {
+                let dis_lat = this.data.latitude
+                let dis_lng = this.data.longitude
+                let map_range = this.data.map_range
+                let marker_size = this.data.marker_small
                 let list = ret.result
-                let arr = []
                 let new_list = []
                 let near_count = 0
                 let bottom = 30
                 list.forEach((value, index, array) => {
+                    //计算距离
                     let distance = ''
-                    let dis_lat = this.data.latitude
-                    let dis_lng = this.data.longitude
-                    if (id) {
+                    if (lat && lng) {
                         dis_lat = lat
                         dis_lng = lng
                     }
@@ -257,95 +267,51 @@ Page({
                     } else if (distance_count > 100000) {
                         distance = '>100公里'
                     }
-                    if (distance != '>100公里') {
+                    value.distance = distance
+                    value.distance_count = distance_count
+                    if (distance_count <= map_range) {
                         near_count += 1
                     }
-
-                    // wx.downloadFile({
-                    //     url: value.s_img,
-                    //     success: (res) => {
-                            value.distance = distance
-                            value.distance_count = distance_count
-                            value.iconPath = `/images/marker_${value.grade}.png`
-
-                            if (id) {
-                                if (value.id == id) {
-                                    value.width = 70
-                                    value.height = 70
-                                } else {
-                                    value.width = 50
-                                    value.height = 50
-                                }
-                            } else {
-                                value.width = 50
-                                value.height = 50
-                            }
-      
-                            arr.push('0')
-                            new_list.push(value)
-                            if (arr.length == list.length) {
-                                let new_map = []
-                                let new_arr = new_list.sort(this.compare("distance_count"))
-                                let center = [{
-                                    id: 9999,
-                                    latitude: this.data.latitude_o,
-                                    longitude: this.data.longitude_o,
-                                    iconPath: '/images/empty.png',
-                                    width: 10,
-                                    height: 10,
-                                    callout: {
-                                        content: `附近${near_count}个网点`,
-                                        display: 'ALWAYS',
-                                        textAlign: 'center',
-                                        color: '#666',
-                                        fontSize: 12,
-                                        padding: 8,
-                                        borderRadius: 10,
-                                        borderWidth: 1,
-                                        borderColor: '#ddd',
-                                        bgColor: '#fff'
-                                    }
-                                }]
-                                let last_distance = 0
-                                if (new_arr.length < 4) {
-                                    last_distance = new_list[new_list.length - 1].distance_count
-                                } else {
-                                    last_distance = new_list[2].distance_count
-                                }
-                                switch (new_arr.length) {
-                                    case 1:
-                                        bottom = 30
-                                        break
-                                    case 2:
-                                        bottom = 200
-                                        break
-                                    case 3:
-                                        bottom = 400
-                                        break
-                                    case 4:
-                                        bottom = 600
-                                        break
-                                    default:
-                                        bottom = 600
-                                        break
-                                }
-                                new_map = new_arr.concat(center)
-                                this.setData({
-                                    list: new_arr,
-                                    map_list: new_map,
-                                    near_count: near_count,
-                                    bottom: bottom,
-                                    map_scale: this.get_scale(last_distance)
-                                })
-                                wx.hideNavigationBarLoading()
-                            }
-                    //     }
-                    // })
+                    //设置标记
+                    value.width = marker_size
+                    value.height = marker_size
+                    value.iconPath = `/images/marker_${value.grade}.png`
+                    //重新赋值
+                    new_list.push(value)
                 })
+                //距离排序
+                let new_arr = new_list.sort(this.compare("distance_count"))
+                //调整列表
+                switch (new_arr.length) {
+                    case 1:
+                        bottom = 30
+                        break
+                    case 2:
+                        bottom = 200
+                        break
+                    case 3:
+                        bottom = 400
+                        break
+                    case 4:
+                        bottom = 600
+                        break
+                    default:
+                        bottom = 600
+                        break
+                }
+                //列表与标记分开，避免清空列表时清除标记
+                this.setData({
+                    open: 1,
+                    bottom: bottom,
+                    list: new_arr,
+                    map_list: new_arr,
+                    near_count: near_count
+                })
+                wx.hideNavigationBarLoading()
             } 
         })
     },
-
+    
     compare: function (prop) {
         return (obj1, obj2) => {
             let val1 = obj1[prop]
@@ -377,21 +343,6 @@ Page({
 
         let r = 6378137
         return Math.round(r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2))))
-    },
-
-    get_scale: function (distance) {
-        let n = 500
-        for (let i=18;i>=5;i--) {
-            if (distance < n) {
-                return i                
-            } else {
-                if (i == 5) {
-                    return i
-                } else {
-                    n = n * 2 
-                }
-            }
-        }
     }
 
 })

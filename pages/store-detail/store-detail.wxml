@@ -1,15 +1,18 @@
-<view class="container">
+<view class="container" wx:if="{{load}}">
     <swiper autoplay="true" circular="true" indicator-dots indicator-color="#fff" indicator-active-color="#1b9aeb" autoplay>
         <swiper-item>
-            <image src="{{data.mengimg}}" lazy-load="true" />
+            <image src="{{data.mengimg}}" lazy-load="true" mode="aspectFill" />
         </swiper-item>
         <swiper-item>
-            <image src="{{data.travelallowimg}}" lazy-load="true" />
+            <image src="{{data.workimg}}" lazy-load="true" mode="aspectFill" />
+        </swiper-item>
+        <swiper-item>
+            <image src="{{data.travelallowimg}}" lazy-load="true" mode="aspectFill" />
         </swiper-item>
     </swiper>
     <view class="title-container">
-        <image class="logo" src="{{data.s_img}}" />
-        <view class="name">
+        <image class="logo" src="{{data.s_img}}" lazy-load="true" mode="aspectFill" />
+        <view class="name" style="{{data.s_name.length >= 10 ? 'font-size: 30rpx;' : 'font-size: 35rpx;'}}">
             {{data.s_name}}
         </view>
         <view class="gps-container" catchtap="tap_gps">
@@ -19,7 +22,7 @@
     </view>
     <view class="item">
         <image src="/images/detail_1.png" />
-        <view>{{data.s_address}}</view>
+        <view style="{{data.s_address.length >= 35 ? 'font-size: 25rpx;' : 'font-size: 30rpx;'}}">{{data.s_address}}</view>
     </view>
     <view class="item">
         <image src="/images/detail_2.png" />
@@ -33,9 +36,13 @@
         <image src="/images/detail_4.png" />
         <view>联系电话：<text style="color: #26abd6;">{{data.s_headphone}}</text></view>
     </view>
-    <view class="item" style="border-bottom: 0;">
+    <view class="item">
         <image src="/images/detail_5.png" />
         <view>经营范围：{{data.allrange}}</view>
+    </view>
+    <view class="item" style="border-bottom: 0;">
+        <image src="/images/detail_6.png" />
+        <view>信用代码：{{data.c_code}}</view>
     </view>
     <!--<view class="item" style="border-bottom: 0;">
         <image src="/images/detail_5.png" />

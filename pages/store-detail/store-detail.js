@@ -9,7 +9,8 @@ Page({
   data: {
     latitude: 0,
     longitude: 0,
-    data: []
+    data: [],
+    load: 0
   },
 
   /**
@@ -69,7 +70,10 @@ Page({
   },
 
     get_location: function (id) {
-      wx.showNavigationBarLoading()
+        wx.showNavigationBarLoading()
+        wx.showLoading({
+            title: '加载中'
+        })
         wx.getLocation({
             type: 'gcj02',
             success: (res) => {
@@ -100,8 +104,10 @@ Page({
         }
         data.distance = distance
         this.setData({
-          data: data
+          data: data,
+          load: 1
         })
+        wx.hideLoading()
          wx.hideNavigationBarLoading()
       }
     })

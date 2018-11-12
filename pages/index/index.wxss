@@ -149,26 +149,43 @@ map {
     height: 150rpx;
 }
 
-.center {
+.center-dialog {
     position: absolute;
     top: 0;
-    bottom: 40rpx;
-    left: 40rpx;
+    bottom: 200rpx;
+    left: 0;
     right: 0;
     margin: auto;
-    width: 200rpx;
-    height: 130rpx;
+    width: 250rpx;
+    height: 60rpx;
 }
 
-.center cover-image {
-    width: 200rpx;
-    height: 130rpx;
+.center-dialog cover-image {
+    width: 250rpx;
+    height: 60rpx;
 }
 
-.center cover-view {
+.center-dialog cover-view {
     position: absolute;
-    top: 10rpx;
-    left: 30rpx;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 250rpx;
+    height: 50rpx;
+    line-height: 50rpx;
     color: #848282;
-    font-size: 22rpx;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.center-marker {
+    position: absolute;
+    top: 0;
+    bottom: 65rpx;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 40rpx;
+    height: 65rpx;
 }

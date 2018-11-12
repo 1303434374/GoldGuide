@@ -43,7 +43,7 @@ page:before{
 .title-container .name {
     flex: 1;
     color: #151517;
-    font-size: 40rpx;
+    font-size: 30rpx;
 }
 
 .gps-container {
