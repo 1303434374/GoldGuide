@@ -2,5 +2,5 @@
     <rich-text nodes="{{contents}}"></rich-text>
 </view>
 <!--<view class="btn" catchtap="tap_btn" wx:if="{{contents}}">
-    我同意此协议
+    我同意此协议啊
 </view>-->
